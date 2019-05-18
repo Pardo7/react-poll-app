@@ -25,7 +25,7 @@ code {
 
 .card {
 	width: 100%;
-	max-width: 590px;
+	max-width: 25rem;
 	padding: 10px;
   display: flex;
   flex-direction: column;
@@ -37,9 +37,15 @@ code {
 .header-title {
  background-color: #f7f7f8;
  border-bottom: 1px solid #dad7d7;
+ margin-bottom: 2rem;
 }
 
 .header-title h4:nth-child(1) {
   margin-bottom: 0rem;
   margin-top: 0rem;
+}
+
+.profile-selection {
+  align-self: center;
+  width: 95%;
 }

@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-import logo from '../logo.svg';
+import logo from "../logo.svg";
 import { connect } from "react-redux";
+import SelectUserProfile from './SelectUserProfile';
 
 class LoginDashboard extends Component {
 	render() {
+		const {authedUser, users, dispatch} = this.props;
+
 		return (
 			<div className="card">
 				<div className="header-title">
@@ -11,15 +14,20 @@ class LoginDashboard extends Component {
 					<h4 className="info-header">Please sign in to continue</h4>
 				</div>
 				<header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        </header>
-				<div>
-					<h3>Sign In</h3>
-
-				</div>
+					<img src={logo} className="App-logo" alt="logo" />
+				</header>
+				<SelectUserProfile users={users} authedUser={authedUser} dispatch={dispatch}/>
 			</div>
 		);
 	}
 }
 
-export default connect()(LoginDashboard);
+function mapStateToProps({ users, authedUser, dispatch }) {
+	return {
+		authedUser: authedUser,
+		users: users,
+		dispatch
+	};
+}
+
+export default connect(mapStateToProps)(LoginDashboard);

@@ -2,9 +2,9 @@ import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
-import Nav from '../components/Nav';
-import LoginDashboard from '../components/LoginDashboard';
-import Dashboard from '../components/Dashboard';
+import Nav from "../components/Nav";
+import LoginDashboard from "../components/LoginDashboard";
+import Dashboard from "../components/Dashboard";
 import "../App.css";
 
 class App extends Component {
@@ -18,10 +18,12 @@ class App extends Component {
 				<Fragment>
 					<div className="App">
 						<Nav />
-            <div>
-              <Route path="/" exact component={Dashboard} />
-              <Route path="/login" exact component={LoginDashboard} />
-            </div>
+						{this.props.loading === true ? null : (
+							<div>
+								<Route path="/" exact component={Dashboard} />
+								<Route path="/login" exact component={LoginDashboard} />
+							</div>
+						)}
 					</div>
 				</Fragment>
 			</Router>
@@ -30,7 +32,9 @@ class App extends Component {
 }
 
 function mapStateToProps({ authedUser }) {
-  return authedUser;
+	return {
+		loading: authedUser === null
+	};
 }
 
 export default connect(mapStateToProps)(App);

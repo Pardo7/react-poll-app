@@ -17,7 +17,9 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps({ authedUser }) {
-  return authedUser;
+  return {
+		authedUser: authedUser
+	};
 }
 
 export default connect(mapStateToProps)(Dashboard);
