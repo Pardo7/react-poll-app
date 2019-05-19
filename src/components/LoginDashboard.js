@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import logo from "../logo.svg";
 import { connect } from "react-redux";
 import SelectUserProfile from './SelectUserProfile';
+import { Redirect } from 'react-router-dom';
 
 class LoginDashboard extends Component {
 	render() {
+		if (this.props.authedUser) return <Redirect to="/"/>
 		const {authedUser, users, dispatch} = this.props;
 
 		return (
