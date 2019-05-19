@@ -11,8 +11,13 @@ export default function Nav(props) {
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to="/login" exact activeClassName="active">
-						Login
+					<NavLink to="/add" exact activeClassName="active">
+						New Question
+					</NavLink>
+				</li>
+				<li>
+					<NavLink to="/leaderboard" exact activeClassName="active">
+						Leader Board
 					</NavLink>
 				</li>
 				{props.user && (
