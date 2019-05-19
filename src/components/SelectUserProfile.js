@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { setAuthedUser } from "../actions/authedUser";
 
 function SelectUserProfile(props) {
-	const { authedUser, users, dispatch } = props;
+	const { users, dispatch } = props;
 
 	return (
 		<Fragment>
