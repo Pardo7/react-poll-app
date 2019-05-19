@@ -14,3 +14,11 @@ export function getInitialData() {
 		questions
 	}));
 }
+
+export function saveQuestion(question) {
+	return _saveQuestion(question);
+}
+
+export function saveQuestionAnswer(details) {
+	return _saveQuestionAnswer(details);
+}

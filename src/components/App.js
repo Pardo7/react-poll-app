@@ -5,6 +5,7 @@ import { handleInitialData } from "../actions/shared";
 import Nav from "../components/Nav";
 import LoginDashboard from "../components/LoginDashboard";
 import Dashboard from "../components/Dashboard";
+import NewQuestion from '../components/NewQuestion';
 import { setAuthedUser } from "../actions/authedUser";
 import "../App.css";
 
@@ -28,6 +29,7 @@ class App extends Component {
 							<div>
 								<Route path="/" exact component={Dashboard} />
 								<Route path="/login" exact component={LoginDashboard} />
+								<Route path="/add" exact component={NewQuestion} />
 							</div>
 						)}
 					</div>
@@ -44,7 +46,7 @@ function mapStateToProps({ authedUser, users, dispatch }) {
 			.filter(user => user.id === authedUser)
 			:
 			false,
-			dispatch
+		dispatch
 	};
 }
 
