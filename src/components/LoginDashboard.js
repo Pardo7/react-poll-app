@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import logo from "../logo.svg";
 import { connect } from "react-redux";
-import SelectUserProfile from './SelectUserProfile';
-import { Redirect } from 'react-router-dom';
+import SelectUserProfile from "./SelectUserProfile";
+import { Redirect } from "react-router-dom";
 
 class LoginDashboard extends Component {
 	render() {
-		if (this.props.authedUser) return <Redirect to="/"/>
-		const {authedUser, users, dispatch} = this.props;
+		if (this.props.authedUser) return <Redirect to="/" />;
+		const { authedUser, users, dispatch } = this.props;
 
 		return (
 			<div className="card">
@@ -18,17 +18,20 @@ class LoginDashboard extends Component {
 				<header className="App-header">
 					<img src={logo} className="App-logo" alt="logo" />
 				</header>
-				<SelectUserProfile users={users} authedUser={authedUser} dispatch={dispatch}/>
+				<SelectUserProfile
+					users={users}
+					authedUser={authedUser}
+					dispatch={dispatch}
+				/>
 			</div>
 		);
 	}
 }
 
-function mapStateToProps({ users, authedUser, dispatch }) {
+function mapStateToProps({ users, authedUser }) {
 	return {
 		authedUser: authedUser,
-		users: users,
-		dispatch
+		users: users
 	};
 }
 

@@ -5,7 +5,7 @@ import { handleInitialData } from "../actions/shared";
 import Nav from "../components/Nav";
 import LoginDashboard from "../components/LoginDashboard";
 import Dashboard from "../components/Dashboard";
-import NewQuestion from '../components/NewQuestion';
+import NewQuestion from "../components/NewQuestion";
 import { setAuthedUser } from "../actions/authedUser";
 import "../App.css";
 
@@ -24,7 +24,7 @@ class App extends Component {
 			<Router>
 				<Fragment>
 					<div className="App">
-						<Nav user={this.props.authedUser[0]} onLogOut={this.logOut} />
+						<Nav user={this.props.authedUser} onLogOut={this.logOut} />
 						{this.props.loading === true ? null : (
 							<div>
 								<Route path="/" exact component={Dashboard} />
@@ -39,14 +39,12 @@ class App extends Component {
 	}
 }
 
-function mapStateToProps({ authedUser, users, dispatch }) {
+function mapStateToProps({ authedUser, users }) {
 	return {
 		loading: authedUser === null,
-		authedUser: authedUser ? Object.values(users)
-			.filter(user => user.id === authedUser)
-			:
-			false,
-		dispatch
+		authedUser: authedUser
+			? Object.values(users).filter(user => user.id === authedUser)[0]
+			: false
 	};
 }
 

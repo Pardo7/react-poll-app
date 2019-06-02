@@ -1,24 +1,22 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import Questions from "./Questions";
 
-class Dashboard extends Component {
-	render() {
-		if (!this.props.authedUser) {
-			return <Redirect to="/login" />;
-		}
+function Dashboard(props) {
+	if (props.authedUser === false || props.authedUser === undefined)
+		return <Redirect to="/login" />;
 
-		return (
-			<div>
-				<h3>Welcome Home</h3>
-			</div>
-		);
-	};
+	return (
+		<div>
+			<Questions />
+		</div>
+	);
 }
 
 function mapStateToProps({ authedUser }) {
-  return {
-		authedUser: authedUser
+	return {
+		authedUser
 	};
 }
 
