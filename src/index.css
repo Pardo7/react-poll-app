@@ -58,11 +58,11 @@ li {
 .header-title {
  background-color: #f7f7f8;
  border-bottom: 1px solid #dad7d7;
- margin-bottom: 2rem;
+ margin-bottom: rem;
 }
 
 .header-title h4:nth-child(1) {
-  margin-bottom: 0rem;
+  margin-bottom: 1rem;
   margin-top: 0rem;
 }
 
@@ -75,4 +75,35 @@ li {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.question-category {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.question-card {
+  width: 100%;
+	max-width: 25rem;
+	padding: 1px;
+  display: flex;
+  flex-direction: column;
+	margin-bottom: 1rem;
+	border: 1px solid #dad7d7;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.question-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.question-form > button {
+  margin-top: 1rem;
+  height: 2.2rem;
+  background-color: royalblue;
+  color: white;
 }

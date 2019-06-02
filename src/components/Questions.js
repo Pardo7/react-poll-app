@@ -37,10 +37,15 @@ class Questions extends Component {
 				</div>
 				<div>
 					{q[category].map(question => (
-						<span key={question.id} className="category">
-							<p>{question.optionOne.text}</p>
-							<p>{question.optionTwo.text}</p>
-						</span>
+						<div className="question-card" key={question.id}>
+							<div className="header-title">
+								<p>{question.author} Asks</p>
+							</div>
+							<span className="question-category">
+								<p>{question.optionOne.text}</p>
+								<p>{question.optionTwo.text}</p>
+							</span>
+						</div>
 					))}
 				</div>
 			</div>
