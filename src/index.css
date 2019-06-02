@@ -70,3 +70,9 @@ li {
   align-self: center;
   width: 95%;
 }
+
+.category {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

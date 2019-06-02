@@ -22,12 +22,10 @@ export default function Nav(props) {
 				</li>
 				{props.user && (
 					<Fragment>
-						<li>
-							Welcome {props.user.name}
-						</li>
+						<li>Welcome {props.user.name}</li>
 						<li>
 							<a href="#" onClick={props.onLogOut}>
-									Logout
+								Logout
 							</a>
 						</li>
 					</Fragment>
