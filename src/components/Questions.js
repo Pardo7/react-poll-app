@@ -3,9 +3,7 @@ import { connect } from "react-redux";
 
 class Questions extends Component {
 	state = {
-		activeCategory: "unanswered",
-		questions: Object.values(this.props.questions),
-		answeredIds: new Set(Object.keys(this.props.authedUser.answers))
+		activeCategory: "unanswered"
 	};
 
 	handleClick = e => {
@@ -15,11 +13,10 @@ class Questions extends Component {
 	};
 
 	render() {
-		const { activeCategory: category, questions, answeredIds } = this.state;
-		const q = {
-			unanswered: [],
-			answered: []
-		};
+		const questions = Object.values(this.props.questions);
+		const answeredIds = new Set(Object.keys(this.props.authedUser.answers));
+		const { activeCategory: category } = this.state;
+		const q = { unanswered: [], answered: [] };
 		questions.forEach(question => {
 			answeredIds.has(question.id)
 				? q.answered.push(question)
