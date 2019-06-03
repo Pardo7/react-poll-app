@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Question from "./Question";
 
 class Questions extends Component {
 	state = {
@@ -35,19 +36,9 @@ class Questions extends Component {
 						</p>
 					</div>
 				</div>
-				<div>
-					{q[category].map(question => (
-						<div className="question-card" key={question.id}>
-							<div className="header-title">
-								<p>{question.author} Asks</p>
-							</div>
-							<span className="question-category">
-								<p>{question.optionOne.text}</p>
-								<p>{question.optionTwo.text}</p>
-							</span>
-						</div>
-					))}
-				</div>
+				{q[category].map(question => (
+					<Question id={question.id} key={question.id} />
+				))}
 			</div>
 		);
 	}

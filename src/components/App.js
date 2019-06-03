@@ -2,11 +2,13 @@ import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
+import { setAuthedUser } from "../actions/authedUser";
 import Nav from "../components/Nav";
 import LoginDashboard from "../components/LoginDashboard";
 import Dashboard from "../components/Dashboard";
 import NewQuestion from "../components/NewQuestion";
-import { setAuthedUser } from "../actions/authedUser";
+import QuestionProfile from "./QuestionProfile";
+import FourOFourPage from "./404Page";
 import "../App.css";
 
 class App extends Component {
@@ -17,7 +19,7 @@ class App extends Component {
 	logOut = () => {
 		this.props.dispatch(setAuthedUser(false));
 		return <Redirect to="/login" />;
-	}
+	};
 
 	render() {
 		return (
@@ -29,7 +31,9 @@ class App extends Component {
 							<div>
 								<Route path="/" exact component={Dashboard} />
 								<Route path="/login" exact component={LoginDashboard} />
+								<Route path="/questions/:id" component={QuestionProfile} />
 								<Route path="/add" exact component={NewQuestion} />
+								<Route path="/404" component={FourOFourPage} />
 							</div>
 						)}
 					</div>

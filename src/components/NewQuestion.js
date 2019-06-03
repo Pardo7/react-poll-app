@@ -43,7 +43,7 @@ class NewQuestion extends Component {
 				</div>
 				<div>
 					<h4 className="info-header">Would you rather...</h4>
-					<form onSubmit={this.handleSubmit} className='question-form'>
+					<form onSubmit={this.handleSubmit} className="question-form">
 						<textarea
 							id="1"
 							placeholder="Enter Option One Text Here"
