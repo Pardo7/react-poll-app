@@ -149,3 +149,48 @@ li {
 	white-space: nowrap;
 	overflow: hidden;
 }
+
+.stats-container {
+	display: flex;
+	justify-content: center;
+}
+
+.option-stat {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: inherit;
+	height: 5em;
+	border-radius: 25px;
+	background-color: aliceblue;
+	margin: 1rem;
+	padding-left: 1rem;
+	padding-bottom: 1rem;
+}
+
+.stat-text {
+	margin: 0 auto;
+	padding: 5px;
+}
+
+.progress-indicator {
+	width: 80%;
+	height: 1rem;
+	background-color: blue;
+	/* margin-left: 1rem; */
+}
+
+.user-vote {
+	align-self: flex-end;
+	width: 2rem;
+	transform: translate(1rem, -1rem);
+	height: 2rem;
+	border-radius: 25px;
+	word-wrap: break-word;
+	background-color: yellow;
+	color: orangered;
+	padding: 0.4rem;
+	position: absolute;
+	font-size: x-small;
+	font-weight: bold;
+}

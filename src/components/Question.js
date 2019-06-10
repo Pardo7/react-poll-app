@@ -5,9 +5,15 @@ import { Link, withRouter } from "react-router-dom";
 import { handleAddQuestionAnswer } from "../actions/questions";
 
 class Question extends Component {
+	state = {
+		voteEnabled: true
+	};
+
 	handleOptionChange = selection => {
+		if (!this.state.voteEnabled) return;
 		const { id, dispatch } = this.props;
 		dispatch(handleAddQuestionAnswer(id, selection));
+		this.setState({ voteEnabled: false });
 	};
 
 	hasSelected({ optionOne, optionTwo }, authedUser) {

@@ -6,7 +6,7 @@ import Stats from "./Stats";
 
 class QuestionProfile extends Component {
 	render() {
-		const { id, question, hasVoted } = this.props;
+		const { id, question, hasVoted, authedUser } = this.props;
 
 		// Redirect to 404
 		if (question === undefined) {
@@ -14,7 +14,7 @@ class QuestionProfile extends Component {
 		}
 
 		return hasVoted ? (
-			<Stats />
+			<Stats question={question} authedUser={authedUser} />
 		) : (
 			<div className="question-profile">
 				<Question id={id} />
