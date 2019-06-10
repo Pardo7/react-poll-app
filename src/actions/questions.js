@@ -1,4 +1,5 @@
 import { saveQuestion, saveQuestionAnswer } from "../utils/api";
+import { receiveAnswer } from "../actions/users";
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ADD_QUESTION = "ADD_QUESTION";
@@ -51,6 +52,7 @@ export function handleAddQuestionAnswer(qid, answer) {
 		};
 		return saveQuestionAnswer(questionAnswer).then(() => {
 			dispatch(addQuestionAnswer(questionAnswer));
+			dispatch(receiveAnswer(questionAnswer));
 		});
 	};
 }

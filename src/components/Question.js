@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { Link, withRouter } from "react-router-dom";
 import { handleAddQuestionAnswer } from "../actions/questions";
 
@@ -61,7 +62,7 @@ class Question extends Component {
 function mapStateToProps({ authedUser, questions }, { id }) {
 	return {
 		authedUser,
-		question: questions[id],
+		question: questions[id]
 	};
 }
 
