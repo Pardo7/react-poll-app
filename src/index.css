@@ -137,6 +137,11 @@ li {
 	justify-content: center;
 }
 
+.question-profile > a {
+	text-decoration: none;
+	color: black;
+}
+
 /* truncate */
 .preview-text {
 	text-overflow: ellipsis;
