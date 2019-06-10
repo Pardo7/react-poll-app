@@ -86,6 +86,21 @@ li {
 	align-items: flex-start;
 }
 
+.question-category > label {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	margin: 1rem 0 1rem 1rem;
+}
+
+.question-category > label > p {
+	margin: 0 auto;
+}
+
+.question-category > label > input {
+	z-index: 10;
+}
+
 .question-card {
 	width: 100%;
 	min-width: 22rem;
@@ -120,4 +135,12 @@ li {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+}
+
+/* truncate */
+.preview-text {
+	text-overflow: ellipsis;
+	width: 4em;
+	white-space: nowrap;
+	overflow: hidden;
 }

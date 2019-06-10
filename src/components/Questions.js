@@ -18,6 +18,7 @@ class Questions extends Component {
 		const answeredIds = new Set(Object.keys(this.props.authedUser.answers));
 		const { activeCategory: category } = this.state;
 		const q = { unanswered: [], answered: [] };
+		const previewMode = true;
 		questions.forEach(question => {
 			answeredIds.has(question.id)
 				? q.answered.push(question)
@@ -37,7 +38,11 @@ class Questions extends Component {
 					</div>
 				</div>
 				{q[category].map(question => (
-					<Question id={question.id} key={question.id} />
+					<Question
+						id={question.id}k
+						key={question.id}
+						previewMode={previewMode}
+					/>
 				))}
 			</div>
 		);

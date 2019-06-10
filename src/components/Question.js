@@ -1,10 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
+import { handleAddQuestionAnswer } from "../actions/questions";
 
 class Question extends Component {
+	handleOptionChange = selection => {
+		const { id, dispatch } = this.props;
+		dispatch(handleAddQuestionAnswer(id, selection));
+	};
+
+	hasSelected({ optionOne, optionTwo }, authedUser) {
+		const optionOneRes = optionOne.votes.includes(authedUser) ? "checked" : "";
+		const optionTwoRes = optionTwo.votes.includes(authedUser) ? "checked" : "";
+		return { optionOne: optionOneRes, optionTwo: optionTwoRes };
+	}
+
 	render() {
-		const { id, question } = this.props;
+		const { id, question, previewMode, authedUser } = this.props;
+		let checkedItem = this.hasSelected(question, authedUser);
 
 		return (
 			<Link to={`/questions/${id}`}>
@@ -13,8 +26,31 @@ class Question extends Component {
 						<p>{question.author} Asks</p>
 					</div>
 					<span className="question-category">
-						<p>{question.optionOne.text}</p>
-						<p>{question.optionTwo.text}</p>
+						<label>
+							{!previewMode && (
+								<input
+									type="checkbox"
+									checked={checkedItem.optionOne}
+									onChange={e => this.handleOptionChange("optionOne")}
+								/>
+							)}
+							<p className={previewMode ? "preview-text" : ""}>
+								{question.optionOne.text}
+							</p>
+						</label>
+
+						<label>
+							{!previewMode && (
+								<input
+									type="checkbox"
+									checked={checkedItem.optionTwo}
+									onChange={e => this.handleOptionChange("optionTwo")}
+								/>
+							)}
+							<p className={previewMode ? "preview-text" : ""}>
+								{question.optionTwo.text}
+							</p>
+						</label>
 					</span>
 				</div>
 			</Link>
@@ -25,7 +61,7 @@ class Question extends Component {
 function mapStateToProps({ authedUser, questions }, { id }) {
 	return {
 		authedUser,
-		question: questions[id]
+		question: questions[id],
 	};
 }
 
