@@ -9,6 +9,7 @@ import Dashboard from "../components/Dashboard";
 import NewQuestion from "../components/NewQuestion";
 import QuestionProfile from "./QuestionProfile";
 import FourOFourPage from "./404Page";
+import LeaderBoard from "./LeaderBoard";
 import "../App.css";
 
 class App extends Component {
@@ -33,6 +34,7 @@ class App extends Component {
 								<Route path="/login" exact component={LoginDashboard} />
 								<Route path="/questions/:id" component={QuestionProfile} />
 								<Route path="/add" exact component={NewQuestion} />
+								<Route path="/leaderboard" component={LeaderBoard} />
 								<Route path="/404" component={FourOFourPage} />
 							</div>
 						)}

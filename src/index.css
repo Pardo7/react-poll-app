@@ -56,6 +56,12 @@ li {
 	align-items: center;
 }
 
+.card-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 .header-title {
 	background-color: #f7f7f8;
 	border-bottom: 1px solid #dad7d7;
@@ -193,4 +199,30 @@ li {
 	position: absolute;
 	font-size: x-small;
 	font-weight: bold;
+}
+
+.score-card {
+	width: 25%;
+	min-width: 25%;
+	max-width: 25%;
+	padding: 1px;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
+	border: 1px solid #dad7d7;
+	border-radius: 3px;
+}
+
+.score-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.score-container .score-card {
+	order: 3;
+}
+
+.score-container > .score-card > .header-title {
+	width: auto;
 }
