@@ -36,6 +36,9 @@ function LeaderBoard(props) {
 						</div>
 
 						<div>
+							<img src={users[user].avatarURL} width="90" height="80" />
+						</div>
+						<div>
 							<span>
 								<p>
 									Answered Questions {Object.keys(users[user].answers).length}

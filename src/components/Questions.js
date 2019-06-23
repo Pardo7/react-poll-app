@@ -21,8 +21,8 @@ class Questions extends Component {
 		const previewMode = true;
 		questions.forEach(question => {
 			answeredIds.has(question.id)
-				? q.answered.push(question)
-				: q.unanswered.push(question);
+				? q.answered.unshift(question)
+				: q.unanswered.unshift(question);
 		});
 
 		return (
@@ -39,7 +39,7 @@ class Questions extends Component {
 				</div>
 				{q[category].map(question => (
 					<Question
-						id={question.id}k
+						id={question.id}
 						key={question.id}
 						previewMode={previewMode}
 					/>

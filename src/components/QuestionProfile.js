@@ -6,12 +6,10 @@ import Stats from "./Stats";
 
 class QuestionProfile extends Component {
 	render() {
-		const { id, question, hasVoted, authedUser } = this.props;
+		const { id, question, hasVoted, authedUser, render404 } = this.props;
 
 		// Redirect to 404
-		if (question === undefined) {
-			return <Redirect to="/404" />;
-		}
+		if (render404) return <Redirect to="/404" />;
 
 		return hasVoted ? (
 			<Stats question={question} authedUser={authedUser} />
@@ -25,16 +23,20 @@ class QuestionProfile extends Component {
 
 function mapStateToProps({ authedUser, questions }, props) {
 	const { id } = props.match.params;
+	if (!questions[id]) return { render404: true };
+
 	const votes = [
 		...questions[id].optionOne.votes,
 		...questions[id].optionTwo.votes
 	];
 	const hasVoted = votes.includes(authedUser);
+
 	return {
 		id,
 		authedUser,
 		question: questions[id],
-		hasVoted
+		hasVoted,
+		render404: false
 	};
 }
 
