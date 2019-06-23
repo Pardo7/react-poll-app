@@ -24,7 +24,7 @@ export default function Nav(props) {
 					<Fragment>
 						<li>Welcome {props.user.name}</li>
 						<li>
-							<a href="#" onClick={props.onLogOut}>
+							<a href="/login" onClick={props.onLogOut}>
 								Logout
 							</a>
 						</li>

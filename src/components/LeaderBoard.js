@@ -1,8 +1,10 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 function LeaderBoard(props) {
-	const { users } = props;
+	const { authedUser, users } = props;
+	if (authedUser === false || authedUser === undefined) return <Redirect to="/login" />;
 	const orderedEntries = Object.entries(users).sort((user, nextUser) => {
 		const userNumAnswers = Object.keys(user[1].answers).length;
 		const userNumQuestions = Object.keys(user[1].questions).length;
@@ -20,7 +22,7 @@ function LeaderBoard(props) {
 	return (
 		<div className="card-container">
 			{Object.keys(orderedUsers).map(user => (
-				<div className="question-card">
+				<div className="question-card" key={users[user].id}>
 					<div className="header-title">
 						<p>{users[user].name}</p>
 					</div>
@@ -36,7 +38,12 @@ function LeaderBoard(props) {
 						</div>
 
 						<div>
-							<img src={users[user].avatarURL} width="90" height="80" />
+							<img
+								src={users[user].avatarURL}
+								width="90"
+								height="80"
+								alt="Character Headshot"
+							/>
 						</div>
 						<div>
 							<span>
@@ -55,8 +62,9 @@ function LeaderBoard(props) {
 	);
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ authedUser, users }) {
 	return {
+		authedUser,
 		users
 	};
 }

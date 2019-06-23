@@ -7,7 +7,7 @@ import Stats from "./Stats";
 class QuestionProfile extends Component {
 	render() {
 		const { id, question, hasVoted, authedUser, render404 } = this.props;
-
+		if (authedUser === false || authedUser === undefined) return <Redirect to="/login" />;
 		// Redirect to 404
 		if (render404) return <Redirect to="/404" />;
 

@@ -32,10 +32,10 @@ class App extends Component {
 							<div>
 								<Route path="/" exact component={Dashboard} />
 								<Route path="/login" exact component={LoginDashboard} />
-								<Route path="/questions/:id" component={QuestionProfile} />
+								<Route path="/questions/:id" exact component={QuestionProfile} />
 								<Route path="/add" exact component={NewQuestion} />
-								<Route path="/leaderboard" component={LeaderBoard} />
-								<Route path="/404" component={FourOFourPage} />
+								<Route path="/leaderboard" exact component={LeaderBoard} />
+								<Route path="/404" exact component={FourOFourPage} />
 							</div>
 						)}
 					</div>
