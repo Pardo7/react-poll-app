@@ -5,39 +5,39 @@ import Question from "./Question";
 import Stats from "./Stats";
 
 class QuestionProfile extends Component {
-	render() {
-		const { id, question, hasVoted, authedUser, render404 } = this.props;
-		if (authedUser === false || authedUser === undefined) return <Redirect to="/login" />;
-		// Redirect to 404
-		if (render404) return <Redirect to="/404" />;
+  render() {
+    const { id, question, hasVoted, authedUser, render404 } = this.props;
+    if (authedUser === false || authedUser === undefined) return <Redirect to="/login" />;
+    // Redirect to 404
+    if (render404) return <Redirect to="/404" />;
 
-		return hasVoted ? (
-			<Stats question={question} authedUser={authedUser} />
-		) : (
-			<div className="question-profile">
-				<Question id={id} />
-			</div>
-		);
-	}
+    return hasVoted ? (
+      <Stats question={question} authedUser={authedUser} />
+    ) : (
+        <div className="question-profile">
+          <Question id={id} />
+        </div>
+      );
+  }
 }
 
 function mapStateToProps({ authedUser, questions }, props) {
-	const { id } = props.match.params;
-	if (!questions[id]) return { render404: true };
+  const { id } = props.match.params;
+  if (!questions[id]) return { render404: true };
 
-	const votes = [
-		...questions[id].optionOne.votes,
-		...questions[id].optionTwo.votes
-	];
-	const hasVoted = votes.includes(authedUser);
+  const votes = [
+    ...questions[id].optionOne.votes,
+    ...questions[id].optionTwo.votes
+  ];
+  const hasVoted = votes.includes(authedUser);
 
-	return {
-		id,
-		authedUser,
-		question: questions[id],
-		hasVoted,
-		render404: false
-	};
+  return {
+    id,
+    authedUser,
+    question: questions[id],
+    hasVoted,
+    render404: false
+  };
 }
 
 export default connect(mapStateToProps)(QuestionProfile);

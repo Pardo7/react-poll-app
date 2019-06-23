@@ -13,45 +13,45 @@ import LeaderBoard from "./LeaderBoard";
 import "../App.css";
 
 class App extends Component {
-	componentDidMount() {
-		this.props.dispatch(handleInitialData());
-	}
+  componentDidMount() {
+    this.props.dispatch(handleInitialData());
+  }
 
-	logOut = () => {
-		this.props.dispatch(setAuthedUser(false));
-		return <Redirect to="/login" />;
-	};
+  logOut = () => {
+    this.props.dispatch(setAuthedUser(false));
+    return <Redirect to="/login" />;
+  };
 
-	render() {
-		return (
-			<Router>
-				<Fragment>
-					<div className="App">
-						<Nav user={this.props.authedUser} onLogOut={this.logOut} />
-						{this.props.loading === true ? null : (
-							<div>
-								<Route path="/" exact component={Dashboard} />
-								<Route path="/login" exact component={LoginDashboard} />
-								<Route path="/questions/:id" exact component={QuestionProfile} />
-								<Route path="/add" exact component={NewQuestion} />
-								<Route path="/leaderboard" exact component={LeaderBoard} />
-								<Route path="/404" exact component={FourOFourPage} />
-							</div>
-						)}
-					</div>
-				</Fragment>
-			</Router>
-		);
-	}
+  render() {
+    return (
+      <Router>
+        <Fragment>
+          <div className="App">
+            <Nav user={this.props.authedUser} onLogOut={this.logOut} />
+            {this.props.loading === true ? null : (
+              <div>
+                <Route path="/" exact component={Dashboard} />
+                <Route path="/login" exact component={LoginDashboard} />
+                <Route path="/questions/:id" exact component={QuestionProfile} />
+                <Route path="/add" exact component={NewQuestion} />
+                <Route path="/leaderboard" exact component={LeaderBoard} />
+                <Route path="/404" exact component={FourOFourPage} />
+              </div>
+            )}
+          </div>
+        </Fragment>
+      </Router>
+    );
+  }
 }
 
 function mapStateToProps({ authedUser, users }) {
-	return {
-		loading: authedUser === null,
-		authedUser: authedUser
-			? Object.values(users).filter(user => user.id === authedUser)[0]
-			: false
-	};
+  return {
+    loading: authedUser === null,
+    authedUser: authedUser
+      ? Object.values(users).filter(user => user.id === authedUser)[0]
+      : false
+  };
 }
 
 export default connect(mapStateToProps)(App);

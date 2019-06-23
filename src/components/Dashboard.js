@@ -4,20 +4,20 @@ import { connect } from "react-redux";
 import Questions from "./Questions";
 
 function Dashboard(props) {
-	if (props.authedUser === false || props.authedUser === undefined)
-		return <Redirect to="/login" />;
+  if (props.authedUser === false || props.authedUser === undefined)
+    return <Redirect to="/login" />;
 
-	return (
-		<div>
-			<Questions />
-		</div>
-	);
+  return (
+    <div>
+      <Questions />
+    </div>
+  );
 }
 
 function mapStateToProps({ authedUser }) {
-	return {
-		authedUser
-	};
+  return {
+    authedUser
+  };
 }
 
 export default connect(mapStateToProps)(Dashboard);
