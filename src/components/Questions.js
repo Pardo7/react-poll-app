@@ -29,10 +29,26 @@ class Questions extends Component {
 			<div className="card">
 				<div className="header-title">
 					<div className="category">
-						<p id="unanswered" onClick={this.handleClick}>
+						<p
+							id="unanswered"
+							style={{
+								backgroundColor:
+									this.state.activeCategory === "unanswered"
+										? "antiquewhite"
+										: ""
+							}}
+							onClick={this.handleClick}
+						>
 							Unanswered Questions
 						</p>
-						<p id="answered" onClick={this.handleClick}>
+						<p
+							id="answered"
+							style={{
+								backgroundColor:
+									this.state.activeCategory === "answered" ? "antiquewhite" : ""
+							}}
+							onClick={this.handleClick}
+						>
 							Answered Questions
 						</p>
 					</div>
