@@ -5,6 +5,17 @@ import Question from "./Question";
 import Stats from "./Stats";
 
 class QuestionProfile extends Component {
+  componentDidMount() {
+    const { authedUser, history } = this.props;
+    if (!authedUser) {
+      const location = {
+        pathname: '/login',
+        state: { from: history.location.pathname }
+      }
+      history.push(location);
+    }
+  }
+
   render() {
     const { id, question, hasVoted, authedUser, render404 } = this.props;
     // Redirect to 404

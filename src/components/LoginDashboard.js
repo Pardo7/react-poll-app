@@ -6,8 +6,15 @@ import { Redirect } from "react-router-dom";
 
 class LoginDashboard extends Component {
   render() {
-    if (this.props.authedUser) return <Redirect to="/" />;
-    const { authedUser, users, dispatch } = this.props;
+    const { authedUser, users, dispatch, history } = this.props;
+
+    if (this.props.authedUser) {
+      const location = {
+        pathname: '/',
+        state: { from: history.location.state.from }
+      }
+      return <Redirect to={location} />;
+    }
 
     return (
       <div className="card">

@@ -4,8 +4,13 @@ import { connect } from "react-redux";
 import Questions from "./Questions";
 
 function Dashboard(props) {
-  if (props.authedUser === false || props.authedUser === undefined)
+  if (props.authedUser === false || props.authedUser === undefined) {
     return <Redirect to="/login" />;
+  }
+
+  if (props.history.location.state !== undefined) {
+    props.history.push(props.history.location.state.from);
+  }
 
   return (
     <div>
