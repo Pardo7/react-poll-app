@@ -9,9 +9,13 @@ class LoginDashboard extends Component {
     const { authedUser, users, dispatch, history } = this.props;
 
     if (this.props.authedUser) {
+      const stateLocation = history.location.state && history.location.state.from
+        ? history.location.state.from
+        : '/';
+
       const location = {
         pathname: '/',
-        state: { from: history.location.state.from }
+        state: { from: stateLocation }
       }
       return <Redirect to={location} />;
     }
